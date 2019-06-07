@@ -75,6 +75,7 @@ def fastExpMod(b, e, m):  # 底数，幂，大数N
         if e % 2 != 0:  # 按位与
             e -= 1
             result = (result * b) % m
+            continue
         e >>= 1
         b = (b * b) % m
     return result
