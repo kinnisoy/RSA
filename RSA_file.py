@@ -94,7 +94,7 @@ def match_d(e, fn):
             return d
         d += 1
 """
-def match_d(e, fn)
+def match_d(e, fn):
     d = 0
     x1 = 0
     x2 = 1
