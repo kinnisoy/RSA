@@ -84,7 +84,8 @@ def selectE(fn, halfkeyLength):
         if math.gcd(e, fn) == 1:
             return e
 
-
+"""
+# 作者本人有没有觉得这个暴力破解式的求d有点离谱啊...
 # 根据选择的e，匹配出唯一的d
 def match_d(e, fn):
     d = 0
@@ -92,9 +93,26 @@ def match_d(e, fn):
         if (e * d) % fn == 1:
             return d
         d += 1
-
-
-
+"""
+def match_d(e, fn):
+    d = 0
+    x1 = 0
+    x2 = 1
+    y1 = 1
+    tmp = fn
+    while e > 0:
+        tmp1 = tmp // e
+        tmp2 = tmp - tmp1 * e
+        tmp = e
+        e = tmp2
+        x = x2 - tmp1 * x1
+        y = d - tmp1 * y1
+        x2 = x1
+        x1 = x
+        d = y1
+        y1 = y
+    if tmp == 1:
+        return d + fn
 
 def encrypt(M, e, n):
     return fastExpMod(M, e, n)
